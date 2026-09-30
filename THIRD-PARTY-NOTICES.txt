@@ -1,0 +1,11 @@
+ONNX Runtime Web 1.21.0 — Microsoft Corporation — MIT.
+Full license: vendor/ort/LICENSE.
+
+The two bundled ONNX models were present in the user-supplied extension archive.
+No license establishing public redistribution rights for these model weights was
+provided. Publisher must establish rights before public distribution.
+
+Flesh and Blood card names, artwork and marks belong to their respective owners.
+References originate from Card Vault, Fabrary and Talishar catalogues. Image
+availability does not grant a license. Existing icon provenance/rights must be
+confirmed by the publisher. No endorsement or affiliation is claimed.

@@ -1,0 +1,106 @@
+{
+  "aurora": {
+    "talents": [
+      "Lightning"
+    ]
+  },
+  "aurora, shooting star": {
+    "talents": [
+      "Lightning"
+    ]
+  },
+  "bravo, star of the show": {
+    "talents": [
+      "Earth",
+      "Ice",
+      "Lightning"
+    ]
+  },
+  "briar": {
+    "talents": [
+      "Earth",
+      "Lightning"
+    ]
+  },
+  "briar, warden of thorns": {
+    "talents": [
+      "Earth",
+      "Lightning"
+    ]
+  },
+  "florian": {
+    "talents": [
+      "Earth"
+    ]
+  },
+  "florian, rotwood harbinger": {
+    "talents": [
+      "Earth"
+    ]
+  },
+  "iyslander": {
+    "talents": [
+      "Ice"
+    ]
+  },
+  "iyslander, stormbind": {
+    "talents": [
+      "Ice"
+    ]
+  },
+  "jarl vetreidi": {
+    "talents": [
+      "Earth",
+      "Ice"
+    ]
+  },
+  "lexi": {
+    "talents": [
+      "Ice",
+      "Lightning"
+    ]
+  },
+  "lexi, livewire": {
+    "talents": [
+      "Ice",
+      "Lightning"
+    ]
+  },
+  "oldhim": {
+    "talents": [
+      "Earth",
+      "Ice"
+    ]
+  },
+  "oldhim, grandfather of eternity": {
+    "talents": [
+      "Earth",
+      "Ice"
+    ]
+  },
+  "oscilio": {
+    "talents": [
+      "Lightning"
+    ]
+  },
+  "oscilio, constella intelligence": {
+    "talents": [
+      "Lightning"
+    ]
+  },
+  "terra": {
+    "talents": [
+      "Earth"
+    ]
+  },
+  "verdance": {
+    "talents": [
+      "Earth"
+    ]
+  },
+  "verdance, thorn of the rose": {
+    "talents": [
+      "Earth"
+    ]
+  }
+}
