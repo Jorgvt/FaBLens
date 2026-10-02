@@ -1,0 +1,73 @@
+name: Release Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag / Version name (e.g. v0.9.1)'
+        required: true
+        default: 'v0.9.1'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Determine Version
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.tag_name }}"
+          else
+            TAG="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "zip_name=FaB-Lens-${TAG}.zip" >> $GITHUB_OUTPUT
+
+      - name: Verify manifest.json
+        run: |
+          if [ ! -f "manifest.json" ]; then
+            echo "Error: manifest.json not found in root directory."
+            exit 1
+          fi
+          # Check valid JSON
+          python3 -c "import json; data=json.load(open('manifest.json')); print(f'Packaging extension: {data.get(\"name\")} v{data.get(\"version\")}')"
+
+      - name: Package Extension ZIP
+        run: |
+          ZIP_NAME="${{ steps.vars.outputs.zip_name }}"
+          echo "Creating package: ${ZIP_NAME}"
+          zip -r "${ZIP_NAME}" . \
+            -x "*.git*" \
+            -x ".github*" \
+            -x "*.DS_Store*" \
+            -x "*.tmp*"
+
+          echo "Archive size:"
+          ls -lh "${ZIP_NAME}"
+
+      - name: Create GitHub Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.tag }}
+          name: FaB Lens ${{ steps.vars.outputs.tag }}
+          files: ${{ steps.vars.outputs.zip_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          body: |
+            ### 📦 Instalación
+            1. Descarga `${{ steps.vars.outputs.zip_name }}` desde los Assets abajo y descomprímelo.
+            2. Abre Google Chrome y ve a `chrome://extensions`.
+            3. Activa el **Modo de desarrollador** (arriba a la derecha).
+            4. Haz clic en **Cargar descomprimida** y selecciona la carpeta descomprimida.
+            5. Abre un vídeo de Flesh and Blood en YouTube o Twitch y pulsa `Alt + Shift + F`.
